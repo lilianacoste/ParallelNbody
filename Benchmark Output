@@ -1,0 +1,29 @@
+[lcoste@gal-i9 ParallelNbody]$ scontrol show job 12615
+JobId=12615 JobName=nbody_benchmark
+   UserId=lcoste(15118) GroupId=lcoste(15118) MCS_label=N/A
+   Priority=4115 Nice=0 Account=galaxyuser QOS=normal
+   JobState=FAILED Reason=NonZeroExitCode Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=255:0
+   RunTime=00:00:01 TimeLimit=01:00:00 TimeMin=N/A
+   SubmitTime=2025-04-15T13:20:52 EligibleTime=2025-04-15T13:20:52
+   AccrueTime=2025-04-15T13:20:52
+   StartTime=2025-04-15T13:20:52 EndTime=2025-04-15T13:20:53 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-04-15T13:20:52 Scheduler=Main
+   Partition=Centaurus AllocNode:Sid=gal-i9:2281926
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=gal-c1
+   BatchHost=gal-c1
+   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=8,mem=16G,node=1,billing=8
+   AllocTRES=cpu=8,mem=16G,node=1,billing=8
+   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+   MinCPUsNode=8 MinMemoryCPU=2G MinTmpDiskNode=0
+   Features=stdmem DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+   Command=/users/lcoste/ParallelNbody/slurm.sh
+   WorkDir=/users/lcoste/ParallelNbody
+   StdErr=/users/lcoste/ParallelNbody/benchmark.out
+   StdIn=/dev/null
+   StdOut=/users/lcoste/ParallelNbody/benchmark.out
+   Power=
+   TresPerTask=cpu:8
