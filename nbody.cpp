@@ -107,6 +107,14 @@ void init_solar(simulation& s) {
   s.vy = {0, 47870, 35020, 29780, 24130, 13070, 9680, 6800, 5430, 29780 + 1022};
   s.vz = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 }
+void reset_force(simulation& s) {
+  #pragma omp parallel for
+  for (size_t i=0; i<s.nbpart; ++i) {
+    s.fx[i] = 0.0;
+    s.fy[i] = 0.0;
+    s.fz[i] = 0.0;
+  }
+}
 
 //meant to update the force that from applies on to
 void compute_all_forces(simulation& s, double G, double softening) {
@@ -133,7 +141,7 @@ void compute_all_forces(simulation& s, double G, double softening) {
 
               double distSqr = dx*dx + dy*dy + dz*dz + softening*softening;
               double distSixth = distSqr * std::sqrt(distSqr);
-              double force = (G * s.m[i] * s.m[j]) / distSixth;
+              double force = (G * s.mass[i] * s.mass[j]) / distSixth;
 
               fx_local[i] += force * dx;
               fy_local[i] += force * dy;
@@ -155,14 +163,7 @@ void compute_all_forces(simulation& s, double G, double softening) {
 
 
 
-void reset_force(simulation& s) {
-  #pragma omp parallel for
-  for (size_t i=0; i<s.nbpart; ++i) {
-    s.fx[i] = 0.0;
-    s.fy[i] = 0.0;
-    s.fz[i] = 0.0;
-  }
-}
+
 
 void apply_force(simulation& s, size_t i, double dt) {
   s.vx[i] += s.fx[i]/s.mass[i]*dt;
