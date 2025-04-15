@@ -1,0 +1,5 @@
+usage: ./nbody <input> <dt> <nbstep> <printevery>
+input can be:
+a number (random initialization)
+planet (initialize with solar system)
+a filename (load from file in singleline tsv)
