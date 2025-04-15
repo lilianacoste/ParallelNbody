@@ -201,14 +201,14 @@ void integrate_motion(simulation& s, double dt)
 
 
 void dump_state(simulation& s) {
-  std::cout<<s.nbpart<<'\t';
-  for (size_t i=0; i<s.nbpart; ++i) {
-    std::cout<<s.mass[i]<<'\t';
-    std::cout<<s.x[i]<<'\t'<<s.y[i]<<'\t'<<s.z[i]<<'\t';
-    std::cout<<s.vx[i]<<'\t'<<s.vy[i]<<'\t'<<s.vz[i]<<'\t';
-    std::cout<<s.fx[i]<<'\t'<<s.fy[i]<<'\t'<<s.fz[i]<<'\t';
+  std::cout << s.nbpart;
+  for (size_t i = 0; i < s.nbpart; ++i) {
+    std::cout << '\t' << s.mass[i]
+              << '\t' << s.x[i] << '\t' << s.y[i] << '\t' << s.z[i]
+              << '\t' << s.vx[i] << '\t' << s.vy[i] << '\t' << s.vz[i]
+              << '\t' << s.fx[i] << '\t' << s.fy[i] << '\t' << s.fz[i];
   }
-  std::cout<<'\n';
+  std::cout << '\n'; 
 }
 
 void load_from_file(simulation& s, std::string filename) {
